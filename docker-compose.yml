@@ -13,3 +13,15 @@ services:
       POSTGRES_DB: ulvinamazow
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: school_db
+
+
+app:
+    container_name: api
+    build: .
+    ports:
+      - "4444:4444"
+    restart: on-failure
+    depends_on:
+      - postgres
+    links:
+      - postgres
